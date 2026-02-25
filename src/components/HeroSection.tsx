@@ -21,8 +21,9 @@ export const HeroSection = () => {
             <span className="text-sm text-muted-foreground font-medium">MEP Engineering Solutions</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            The Right <br />
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>Precision in
+Candidate For
+Your Business<br />
             <span className="gradient-text">Candidate</span> For <br />
             Your Business
           </h1>
@@ -48,19 +49,18 @@ export const HeroSection = () => {
 
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-20 md:mt-32 animate-fade-in-up" style={{ animationDelay: "0.7s" }}>
-          {[
-            { value: "15+", label: "Years Experience" },
-            { value: "200+", label: "Projects Completed" },
-            { value: "50+", label: "Expert Engineers" },
-            { value: "24/7", label: "Support Available" },
-          ].map((stat) => (
-            <div key={stat.label} className="glass-panel p-4 md:p-6 text-center hover-lift">
+          {[{ value: "15+", label: "Years Experience" },
+          { value: "200+", label: "Projects Completed" },
+          { value: "50+", label: "Expert Engineers" },
+          { value: "24/7", label: "Support Available" }].
+          map((stat) =>
+          <div key={stat.label} className="glass-panel p-4 md:p-6 text-center hover-lift">
               <div className="text-2xl md:text-4xl font-heading font-bold text-primary mb-1">{stat.value}</div>
               <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
             </div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
