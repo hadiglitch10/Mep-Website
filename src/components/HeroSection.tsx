@@ -23,7 +23,8 @@ export const HeroSection = () => {
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>Precision in
 Every System 
-Your Business<br />
+We Build
+            <br />
             <span className="gradient-text">Every System</span> For <br />
             Your Business
           </h1>
@@ -49,8 +50,7 @@ Your Business<br />
 
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-20 md:mt-32 animate-fade-in-up" style={{ animationDelay: "0.7s" }}>
-          {[{ value: "15+", label: "Years Experience" },
-          { value: "200+", label: "Projects Completed" },
+          {[{ value: "15+", label: "Years Experience" }, { value: "200+", label: "Projects Completed" },
           { value: "50+", label: "Expert Engineers" },
           { value: "24/7", label: "Support Available" }].
           map((stat) =>
