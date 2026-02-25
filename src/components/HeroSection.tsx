@@ -24,7 +24,7 @@ export const HeroSection = () => {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>Precision in
 Candidate For
 Your Business<br />
-            <span className="gradient-text">Candidate</span> For <br />
+            <span className="gradient-text">Every System</span> For <br />
             Your Business
           </h1>
 
