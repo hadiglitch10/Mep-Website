@@ -21,12 +21,10 @@ export const HeroSection = () => {
             <span className="text-sm text-muted-foreground font-medium">MEP Engineering Solutions</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>Precision in
-Every System 
-We Build
-            <br />
-            <span className="gradient-text">Every System</span> For <br />
-            Your Business
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            Precision in<br />
+            <span className="gradient-text">Every System</span><br />
+            We Build
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
