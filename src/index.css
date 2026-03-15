@@ -38,12 +38,12 @@
 
     --sidebar-background: 220 22% 8%;
     --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 24 95% 53%;
-    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-primary: 211 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 215 25% 14%;
     --sidebar-accent-foreground: 210 20% 92%;
     --sidebar-border: 215 20% 18%;
-    --sidebar-ring: 24 95% 53%;
+    --sidebar-ring: 211 100% 50%;
 
     /* Custom tokens */
     --navy: 220 40% 13%;
