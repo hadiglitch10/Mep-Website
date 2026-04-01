@@ -9,8 +9,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Calendar, Building2, ArrowRight, CheckCircle2, Lightbulb, TrendingUp, Download } from "lucide-react";
+import { MapPin, Calendar, Building2, ArrowRight, CheckCircle2, Lightbulb, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface ProjectDetail {
   title: string;
@@ -37,6 +38,7 @@ interface Props {
 }
 
 export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelated }: Props) => {
+  const { t } = useLanguage();
   if (!project) return null;
 
   return (
@@ -71,7 +73,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
                 <div className="flex items-center gap-3 glass-panel p-4">
                   <Building2 className="w-5 h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Client</p>
+                    <p className="text-xs text-muted-foreground">{t("dialog.client")}</p>
                     <p className="text-sm font-medium text-foreground">{project.client}</p>
                   </div>
                 </div>
@@ -80,7 +82,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
                 <div className="flex items-center gap-3 glass-panel p-4">
                   <MapPin className="w-5 h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Location</p>
+                    <p className="text-xs text-muted-foreground">{t("dialog.location")}</p>
                     <p className="text-sm font-medium text-foreground">{project.location}</p>
                   </div>
                 </div>
@@ -89,7 +91,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
                 <div className="flex items-center gap-3 glass-panel p-4">
                   <Calendar className="w-5 h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Year</p>
+                    <p className="text-xs text-muted-foreground">{t("dialog.year")}</p>
                     <p className="text-sm font-medium text-foreground">{project.year}</p>
                   </div>
                 </div>
@@ -99,7 +101,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
             {/* Scope of Work */}
             {project.scope && project.scope.length > 0 && (
               <div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3">Scope of Work</h3>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-3">{t("dialog.scopeTitle")}</h3>
                 <ul className="space-y-2">
                   {project.scope.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -114,7 +116,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
             {/* Systems Delivered */}
             {project.systems && project.systems.length > 0 && (
               <div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3">Systems Delivered</h3>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-3">{t("dialog.systemsTitle")}</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.systems.map((sys) => (
                     <Badge key={sys} variant="secondary" className="bg-secondary text-secondary-foreground">
@@ -128,7 +130,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
             {/* Gallery */}
             {project.gallery && project.gallery.length > 0 && (
               <div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3">Gallery</h3>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-3">{t("dialog.galleryTitle")}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {project.gallery.map((img, i) => (
                     <div key={i} className="rounded-lg overflow-hidden h-[140px]">
@@ -142,13 +144,13 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
             {/* Case Study */}
             {(project.challenge || project.solution || project.result) && (
               <div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-4">Case Study</h3>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-4">{t("dialog.caseStudyTitle")}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {project.challenge && (
                     <div className="glass-panel p-4 space-y-2">
                       <div className="flex items-center gap-2 text-primary">
                         <Lightbulb className="w-4 h-4" />
-                        <span className="text-sm font-semibold">Challenge</span>
+                        <span className="text-sm font-semibold">{t("dialog.challenge")}</span>
                       </div>
                       <p className="text-sm text-muted-foreground">{project.challenge}</p>
                     </div>
@@ -157,7 +159,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
                     <div className="glass-panel p-4 space-y-2">
                       <div className="flex items-center gap-2 text-primary">
                         <CheckCircle2 className="w-4 h-4" />
-                        <span className="text-sm font-semibold">Solution</span>
+                        <span className="text-sm font-semibold">{t("dialog.solution")}</span>
                       </div>
                       <p className="text-sm text-muted-foreground">{project.solution}</p>
                     </div>
@@ -166,7 +168,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
                     <div className="glass-panel p-4 space-y-2">
                       <div className="flex items-center gap-2 text-primary">
                         <TrendingUp className="w-4 h-4" />
-                        <span className="text-sm font-semibold">Result</span>
+                        <span className="text-sm font-semibold">{t("dialog.result")}</span>
                       </div>
                       <p className="text-sm text-muted-foreground">{project.result}</p>
                     </div>
@@ -180,7 +182,7 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
             {/* Related Projects */}
             {project.relatedProjects && project.relatedProjects.length > 0 && (
               <div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3">Related Projects</h3>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-3">{t("dialog.relatedTitle")}</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {project.relatedProjects.map((rp) => (
                     <div
@@ -202,11 +204,11 @@ export const ProjectDetailDialog = ({ project, open, onOpenChange, onSelectRelat
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-3 items-center justify-between glass-panel p-5">
-              <p className="text-sm text-muted-foreground">Interested in a similar project?</p>
+              <p className="text-sm text-muted-foreground">{t("dialog.interestedText")}</p>
               <div className="flex gap-3">
                 <Button variant="outline" size="sm" asChild>
                   <Link to="/contact">
-                    Request a Quote <ArrowRight className="w-4 h-4 ml-1" />
+                    {t("dialog.requestQuote")} <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
                 </Button>
               </div>

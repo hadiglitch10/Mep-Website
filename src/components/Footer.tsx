@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Footer = () => {
+  const { t } = useLanguage();
+
+  const serviceLinks = [
+    { label: t("navbar.serviceItems.itNetwork"), href: "/services/it-network" },
+    { label: t("navbar.serviceItems.lowCurrent"), href: "/services/low-current" },
+    { label: t("navbar.serviceItems.hvac"), href: "/services/hvac" },
+    { label: t("navbar.serviceItems.ups"), href: "/services/ups" },
+    { label: t("navbar.serviceItems.firefighting"), href: "/services/firefighting" },
+    { label: t("navbar.serviceItems.electrical"), href: "/services/electrical" },
+  ];
+
+  const quickLinks = [
+    { label: t("footer.aboutUs"), href: "/about" },
+    { label: t("footer.projects"), href: "/projects" },
+    { label: t("footer.careers"), href: "/contact" },
+    { label: t("footer.contact"), href: "/contact" },
+  ];
+
   return (
     <footer className="border-t border-border py-16 px-4 md:px-8">
       <div className="container mx-auto">
@@ -18,17 +37,17 @@ export const Footer = () => {
               </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Your trusted partner for comprehensive MEP engineering solutions in the Middle East.
+              {t("footer.brandDesc")}
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Services</h4>
+            <h4 className="font-heading font-semibold text-foreground mb-4">{t("footer.servicesTitle")}</h4>
             <div className="space-y-2">
-              {["IT & Network", "Low Current", "HVAC Systems", "UPS Systems", "Firefighting", "Electrical"].map((s) => (
-                <Link key={s} to="/services" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                  {s}
+              {serviceLinks.map((s) => (
+                <Link key={s.href} to={s.href} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {s.label}
                 </Link>
               ))}
             </div>
@@ -36,14 +55,9 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Quick Links</h4>
+            <h4 className="font-heading font-semibold text-foreground mb-4">{t("footer.linksTitle")}</h4>
             <div className="space-y-2">
-              {[
-                { label: "About Us", href: "/about" },
-                { label: "Projects", href: "/projects" },
-                { label: "Careers", href: "/#contact" },
-                { label: "Contact", href: "/#contact" },
-              ].map((link) => (
+              {quickLinks.map((link) => (
                 <Link key={link.label} to={link.href} className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                   {link.label}
                 </Link>
@@ -53,7 +67,7 @@ export const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Contact</h4>
+            <h4 className="font-heading font-semibold text-foreground mb-4">{t("footer.contactTitle")}</h4>
             <div className="space-y-3">
               <a href="tel:+20222670303" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" /> +202 226 703 03
@@ -70,7 +84,7 @@ export const Footer = () => {
 
         <div className="border-t border-border mt-12 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} MEP Engineering Solutions. All rights reserved.
+            © {new Date().getFullYear()} {t("footer.copyright")}
           </p>
         </div>
       </div>

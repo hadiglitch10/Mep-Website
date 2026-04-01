@@ -10,6 +10,7 @@ import aboutBg from "@/assets/about-bg.jpg";
 import serviceUps from "@/assets/service-ups.jpg";
 import serviceLowcurrent from "@/assets/service-lowcurrent.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const projects: ProjectDetail[] = [
   {
@@ -106,6 +107,7 @@ const projects: ProjectDetail[] = [
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const { t } = useLanguage();
 
   const handleSelectRelated = (rp: ProjectDetail) => {
     const full = projects.find((p) => p.title === rp.title);
@@ -125,12 +127,14 @@ const Projects = () => {
         <section className="pt-32 pb-10 px-4 md:px-8">
           <div className="container mx-auto">
             <ScrollReveal>
-              <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">Portfolio</span>
+              <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">
+                {t("projectsPage.sectionLabel")}
+              </span>
               <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">
-                Our <span className="gradient-text">Projects</span>
+                {t("projectsPage.heading1")} <span className="gradient-text">{t("projectsPage.heading2")}</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                Explore our portfolio of successfully delivered MEP engineering projects.
+                {t("projectsPage.subtitle")}
               </p>
             </ScrollReveal>
           </div>

@@ -1,34 +1,36 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Sun, Moon, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  {
-    label: "Services",
-    href: "/services",
-    children: [
-      { label: "IT & Network", href: "/services/it-network" },
-      { label: "Low Current", href: "/services/low-current" },
-      { label: "HVAC Systems", href: "/services/hvac" },
-      { label: "UPS Systems", href: "/services/ups" },
-      { label: "Firefighting", href: "/services/firefighting" },
-      { label: "Electrical Systems", href: "/services/electrical" },
-    ],
-  },
-  { label: "Projects", href: "/projects" },
-  { label: "Sectors", href: "/#sectors" },
-  { label: "Quality & HSE", href: "/#quality" },
-  { label: "Contact", href: "/#contact" },
-];
+import { useTheme } from "next-themes";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
+  const { t, lang, toggleLang } = useLanguage();
+
+  const navItems = [
+    { label: t("navbar.home"), href: "/" },
+    { label: t("navbar.about"), href: "/about" },
+    {
+      label: t("navbar.services"),
+      href: "/services",
+      children: [
+        { label: t("navbar.serviceItems.itNetwork"), href: "/services/it-network" },
+        { label: t("navbar.serviceItems.lowCurrent"), href: "/services/low-current" },
+        { label: t("navbar.serviceItems.hvac"), href: "/services/hvac" },
+        { label: t("navbar.serviceItems.ups"), href: "/services/ups" },
+        { label: t("navbar.serviceItems.firefighting"), href: "/services/firefighting" },
+        { label: t("navbar.serviceItems.electrical"), href: "/services/electrical" },
+      ],
+    },
+    { label: t("navbar.projects"), href: "/projects" },
+    { label: t("navbar.contact"), href: "/contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -40,6 +42,8 @@ export const Navbar = () => {
     setMobileOpen(false);
     setMegaOpen(false);
   }, [location]);
+
+  const isDark = theme === "dark";
 
   return (
     <header
@@ -62,7 +66,12 @@ export const Navbar = () => {
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
-            <div key={item.label} className="relative" onMouseEnter={() => item.children && setMegaOpen(true)} onMouseLeave={() => item.children && setMegaOpen(false)}>
+            <div
+              key={item.label}
+              className="relative"
+              onMouseEnter={() => item.children && setMegaOpen(true)}
+              onMouseLeave={() => item.children && setMegaOpen(false)}
+            >
               <Link
                 to={item.href}
                 className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:text-primary hover:bg-muted ${
@@ -72,7 +81,14 @@ export const Navbar = () => {
                 {item.label}
               </Link>
               {item.children && megaOpen && (
-                <div className="absolute top-full left-0 mt-2 glass-panel p-4 min-w-[240px] animate-fade-in-up" style={{ animationDuration: "0.2s" }}>
+                <div
+                  className="absolute top-full mt-2 glass-panel p-4 min-w-[240px] animate-fade-in-up"
+                  style={{
+                    animationDuration: "0.2s",
+                    left: lang === "ar" ? "auto" : "0",
+                    right: lang === "ar" ? "0" : "auto",
+                  }}
+                >
                   {item.children.map((child) => (
                     <Link
                       key={child.label}
@@ -88,14 +104,36 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* CTA + Mobile toggle */}
-        <div className="flex items-center gap-3">
-          <Link to="/#contact">
+        {/* Controls: Language + Theme + CTA + Mobile toggle */}
+        <div className="flex items-center gap-2">
+          {/* Language toggle */}
+          <button
+            onClick={toggleLang}
+            title={lang === "en" ? "Switch to Arabic" : "التبديل إلى الإنجليزية"}
+            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors border border-border"
+          >
+            <Languages className="w-3.5 h-3.5" />
+            {lang === "en" ? "AR" : "EN"}
+          </button>
+
+          {/* Theme toggle */}
+          <button
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            className="hidden md:flex items-center justify-center w-9 h-9 text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors border border-border"
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+
+          {/* CTA */}
+          <Link to="/contact">
             <Button variant="default" size="sm" className="hidden md:inline-flex gap-2 font-heading">
               <Phone className="w-4 h-4" />
-              Request a Quote
+              {t("navbar.requestQuote")}
             </Button>
           </Link>
+
+          {/* Mobile hamburger */}
           <button
             className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -117,7 +155,7 @@ export const Navbar = () => {
                 {item.label}
               </Link>
               {item.children && (
-                <div className="pl-6">
+                <div className="ps-6">
                   {item.children.map((child) => (
                     <Link
                       key={child.label}
@@ -131,10 +169,28 @@ export const Navbar = () => {
               )}
             </div>
           ))}
-          <Link to="/#contact" className="block mt-4">
+
+          {/* Mobile controls row */}
+          <div className="flex items-center gap-2 mt-4 px-4">
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-muted-foreground hover:text-primary rounded-lg transition-colors border border-border"
+            >
+              <Languages className="w-3.5 h-3.5" />
+              {lang === "en" ? "AR" : "EN"}
+            </button>
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              className="flex items-center justify-center w-9 h-9 text-muted-foreground hover:text-primary rounded-lg transition-colors border border-border"
+            >
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+          </div>
+
+          <Link to="/contact" className="block mt-3">
             <Button variant="default" size="sm" className="w-full gap-2 font-heading">
               <Phone className="w-4 h-4" />
-              Request a Quote
+              {t("navbar.requestQuote")}
             </Button>
           </Link>
         </div>

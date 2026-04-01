@@ -5,7 +5,66 @@
 @tailwind utilities;
 
 @layer base {
+  /* ─── Light theme (default) ─── */
   :root {
+    --background: 216 28% 93%;
+    --foreground: 220 40% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 8%;
+
+    --primary: 211 100% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 216 22% 86%;
+    --secondary-foreground: 220 40% 12%;
+
+    --muted: 216 22% 88%;
+    --muted-foreground: 220 14% 38%;
+
+    --accent: 211 100% 44%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 18% 76%;
+    --input: 216 18% 76%;
+    --ring: 211 100% 44%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 216 28% 90%;
+    --sidebar-foreground: 220 40% 8%;
+    --sidebar-primary: 211 100% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 216 22% 86%;
+    --sidebar-accent-foreground: 220 40% 8%;
+    --sidebar-border: 216 18% 76%;
+    --sidebar-ring: 211 100% 44%;
+
+    /* Custom tokens */
+    --navy: 220 40% 18%;
+    --navy-light: 215 30% 28%;
+    --navy-deep: 220 45% 8%;
+    --orange-glow: 211 100% 44%;
+    --orange-dim: 211 70% 38%;
+    --glass: 0 0% 100%;
+    --glass-border: 216 18% 74%;
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --shadow-card: 0 4px 20px -4px hsl(220 40% 8% / 0.08);
+    --shadow-glow: 0 0 32px -8px hsl(211 100% 44% / 0.2);
+    --shadow-elevated: 0 12px 40px -8px hsl(220 40% 8% / 0.12);
+  }
+
+  /* ─── Dark theme ─── */
+  .dark {
     --background: 220 25% 6%;
     --foreground: 210 20% 92%;
 
@@ -34,8 +93,6 @@
     --input: 215 20% 18%;
     --ring: 211 100% 50%;
 
-    --radius: 0.75rem;
-
     --sidebar-background: 220 22% 8%;
     --sidebar-foreground: 210 20% 92%;
     --sidebar-primary: 211 100% 50%;
@@ -53,9 +110,6 @@
     --orange-dim: 211 70% 40%;
     --glass: 220 25% 12%;
     --glass-border: 215 20% 22%;
-
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
 
     --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
     --shadow-glow: 0 0 40px -10px hsl(211 100% 50% / 0.3);
@@ -117,7 +171,7 @@
 
   /* Animated background grid */
   .bg-grid {
-    background-image: 
+    background-image:
       linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
     background-size: 60px 60px;

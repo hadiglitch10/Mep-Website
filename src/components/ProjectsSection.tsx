@@ -6,6 +6,7 @@ import { ProjectDetailDialog, type ProjectDetail } from "@/components/ProjectDet
 import serviceNetwork from "@/assets/service-network.jpg";
 import serviceHvac from "@/assets/service-hvac.jpg";
 import aboutBg from "@/assets/about-bg.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const projects: ProjectDetail[] = [
   {
@@ -76,13 +77,13 @@ const projects: ProjectDetail[] = [
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const { t } = useLanguage();
 
   const handleSelectRelated = (rp: ProjectDetail) => {
     const full = projects.find((p) => p.title === rp.title);
     if (full) setSelectedProject(full);
   };
 
-  // Attach related projects
   const enriched = projects.map((p) => ({
     ...p,
     relatedProjects: projects.filter((r) => r.title !== p.title).slice(0, 2),
@@ -94,13 +95,15 @@ export const ProjectsSection = () => {
         <ScrollReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">Portfolio</span>
+              <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">
+                {t("projects.sectionLabel")}
+              </span>
               <h2 className="text-3xl md:text-5xl font-heading font-bold">
-                Featured <span className="gradient-text">Projects</span>
+                {t("projects.heading1")} <span className="gradient-text">{t("projects.heading2")}</span>
               </h2>
             </div>
             <Link to="/projects" className="inline-flex items-center gap-2 text-primary font-heading font-semibold hover:gap-4 transition-all">
-              View All Projects <ArrowRight className="w-5 h-5" />
+              {t("projects.viewAll")} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </ScrollReveal>

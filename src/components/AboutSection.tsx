@@ -2,35 +2,18 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
 import { Target, Eye, Shield, Clock, ArrowRight } from "lucide-react";
 import aboutBg from "@/assets/about-bg.jpg";
-
-const values = [
-  {
-    icon: Target,
-    title: "Values",
-    description: "MEP provides a complete range of electrical, HVAC, mechanical, CCTV and fire systems.",
-    number: "01",
-  },
-  {
-    icon: Eye,
-    title: "Vision",
-    description: "To be the premier contracting and supplies company in the Middle East.",
-    number: "02",
-  },
-  {
-    icon: Shield,
-    title: "Mission",
-    description: "A partnership committed to quality, innovation and delivering value to our clients.",
-    number: "03",
-  },
-  {
-    icon: Clock,
-    title: "Support 24/7",
-    description: "We operate 24/7 to ensure your complete satisfaction round the clock.",
-    number: "04",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const AboutSection = () => {
+  const { t } = useLanguage();
+
+  const values = [
+    { icon: Target, titleKey: "about.values.values.title", descKey: "about.values.values.desc", number: "01" },
+    { icon: Eye, titleKey: "about.values.vision.title", descKey: "about.values.vision.desc", number: "02" },
+    { icon: Shield, titleKey: "about.values.mission.title", descKey: "about.values.mission.desc", number: "03" },
+    { icon: Clock, titleKey: "about.values.support.title", descKey: "about.values.support.desc", number: "04" },
+  ];
+
   return (
     <section id="about" className="section-padding relative overflow-hidden">
       <div className="container mx-auto">
@@ -47,8 +30,8 @@ export const AboutSection = () => {
                       <Shield className="w-6 h-6 text-primary-foreground" />
                     </div>
                     <div>
-                      <p className="font-heading font-semibold text-foreground">ISO Certified</p>
-                      <p className="text-sm text-muted-foreground">Quality Management System</p>
+                      <p className="font-heading font-semibold text-foreground">{t("about.certified")}</p>
+                      <p className="text-sm text-muted-foreground">{t("about.certifiedSub")}</p>
                     </div>
                   </div>
                 </div>
@@ -57,15 +40,17 @@ export const AboutSection = () => {
 
             {/* Text */}
             <div className="lg:w-1/2">
-              <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">About Us</span>
+              <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">
+                {t("about.sectionLabel")}
+              </span>
               <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 leading-tight">
-                Engineering <span className="gradient-text">Excellence</span> Since Day One
+                {t("about.heading1")} <span className="gradient-text">{t("about.heading2")}</span> {t("about.heading3")}
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                MEP Engineering Solutions is a leading provider of comprehensive mechanical, electrical, and plumbing solutions. We specialize in delivering high-quality, integrated solutions across HVAC, data centers, UPS systems, low current, firefighting, and more.
+                {t("about.description")}
               </p>
               <Link to="/about" className="inline-flex items-center gap-2 text-primary font-heading font-semibold hover:gap-4 transition-all">
-                Learn More About Us <ArrowRight className="w-5 h-5" />
+                {t("about.learnMore")} <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
           </div>
@@ -74,14 +59,16 @@ export const AboutSection = () => {
         {/* Value cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
           {values.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 100}>
+            <ScrollReveal key={item.number} delay={i * 100}>
               <div className="glass-panel p-6 hover-lift group cursor-default relative overflow-hidden">
-                <span className="absolute top-4 right-4 text-5xl font-heading font-bold text-muted/30 group-hover:text-primary/10 transition-colors">{item.number}</span>
+                <span className="absolute top-4 right-4 text-5xl font-heading font-bold text-muted/30 group-hover:text-primary/10 transition-colors">
+                  {item.number}
+                </span>
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-heading font-semibold text-lg mb-2 text-foreground">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                <h3 className="font-heading font-semibold text-lg mb-2 text-foreground">{t(item.titleKey)}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t(item.descKey)}</p>
               </div>
             </ScrollReveal>
           ))}

@@ -2,14 +2,15 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic
-    alert("Thank you! We'll get back to you shortly.");
+    alert(t("contact.successMessage"));
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -19,12 +20,14 @@ export const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Info */}
           <ScrollReveal direction="left">
-            <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">Get in Touch</span>
+            <span className="text-primary font-heading font-semibold text-sm tracking-wider uppercase mb-4 block">
+              {t("contact.sectionLabel")}
+            </span>
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">
-              Let's Build <span className="gradient-text">Together</span>
+              {t("contact.heading1")} <span className="gradient-text">{t("contact.heading2")}</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-10">
-              Ready to start your next project? Contact us for a consultation or quote. Our team of expert engineers is ready to deliver the best MEP solutions for your business.
+              {t("contact.description")}
             </p>
 
             <div className="space-y-6">
@@ -33,7 +36,7 @@ export const ContactSection = () => {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Call Us</p>
+                  <p className="text-sm text-muted-foreground">{t("contact.callUs")}</p>
                   <p className="font-heading font-semibold text-foreground">+202 226 703 03</p>
                 </div>
               </a>
@@ -42,7 +45,7 @@ export const ContactSection = () => {
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Email Us</p>
+                  <p className="text-sm text-muted-foreground">{t("contact.emailUs")}</p>
                   <p className="font-heading font-semibold text-foreground">info@mep-egypt.com</p>
                 </div>
               </a>
@@ -51,7 +54,7 @@ export const ContactSection = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Visit Us</p>
+                  <p className="text-sm text-muted-foreground">{t("contact.visitUs")}</p>
                   <p className="font-heading font-semibold text-foreground">Cairo, Egypt</p>
                 </div>
               </div>
@@ -61,11 +64,11 @@ export const ContactSection = () => {
           {/* Form */}
           <ScrollReveal direction="right">
             <form onSubmit={handleSubmit} className="glass-panel p-8">
-              <h3 className="font-heading font-semibold text-xl mb-6 text-foreground">Request a Quote</h3>
+              <h3 className="font-heading font-semibold text-xl mb-6 text-foreground">{t("contact.formTitle")}</h3>
               <div className="space-y-4">
                 <input
                   type="text"
-                  placeholder="Your Name"
+                  placeholder={t("contact.namePlaceholder")}
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -73,7 +76,7 @@ export const ContactSection = () => {
                 />
                 <input
                   type="email"
-                  placeholder="Email Address"
+                  placeholder={t("contact.emailPlaceholder")}
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -81,13 +84,13 @@ export const ContactSection = () => {
                 />
                 <input
                   type="tel"
-                  placeholder="Phone Number"
+                  placeholder={t("contact.phonePlaceholder")}
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                 />
                 <textarea
-                  placeholder="Tell us about your project..."
+                  placeholder={t("contact.messagePlaceholder")}
                   rows={4}
                   required
                   value={formData.message}
@@ -96,7 +99,7 @@ export const ContactSection = () => {
                 />
                 <Button type="submit" size="lg" className="w-full gap-2 font-heading text-base py-6 shadow-glow">
                   <Send className="w-5 h-5" />
-                  Send Message
+                  {t("contact.sendButton")}
                 </Button>
               </div>
             </form>

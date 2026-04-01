@@ -1,4 +1,5 @@
 import { ScrollReveal } from "./ScrollReveal";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const clients = [
   { name: "Vodafone Egypt", logo: "https://logo.clearbit.com/vodafone.com" },
@@ -42,6 +43,7 @@ const ClientCard = ({ name, logo }: { name: string; logo: string | null }) => (
 );
 
 export const ClientsSection = () => {
+  const { t } = useLanguage();
   const row1 = clients;
   const row2 = [...clients.slice(8), ...clients.slice(0, 8)];
 
@@ -49,12 +51,12 @@ export const ClientsSection = () => {
     <section className="py-20 px-4 md:px-8 border-t border-border overflow-hidden">
       <div className="container mx-auto mb-12 text-center">
         <ScrollReveal>
-          <span className="text-primary font-heading text-sm tracking-widest uppercase">Trusted By</span>
+          <span className="text-primary font-heading text-sm tracking-widest uppercase">{t("clients.sectionLabel")}</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-2">
-            Clients We've Worked With
+            {t("clients.heading")}
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm">
-            Delivering excellence to leading organizations across the Middle East.
+            {t("clients.description")}
           </p>
         </ScrollReveal>
       </div>
