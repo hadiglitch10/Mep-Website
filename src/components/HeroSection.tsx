@@ -17,14 +17,14 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 md:px-8 relative z-10 pt-32">
+      <div className="container mx-auto px-4 md:px-8 relative z-10 pt-24 md:pt-32 lg:pt-40">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 glass-panel px-4 py-2 mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm text-muted-foreground font-medium">{t("hero.badge")}</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold leading-[1.05] md:leading-[0.95] mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             {t("hero.headline1")}<br />
             <span className="gradient-text">{t("hero.headline2")}</span><br />
             {t("hero.headline3")}
@@ -34,15 +34,15 @@ export const HeroSection = () => {
             {t("hero.subtitle")}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-            <Link to="/contact">
-              <Button size="lg" className="gap-2 font-heading text-base px-8 py-6 shadow-elevated hover:-translate-y-1 transition-all">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up w-full sm:w-auto mt-8" style={{ animationDelay: "0.5s" }}>
+            <Link to="/contact" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto gap-2 font-heading text-base px-8 py-6 shadow-elevated hover:-translate-y-1 transition-all">
                 {t("hero.ctaPrimary")}
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
-            <Link to="/services">
-              <Button variant="outline" size="lg" className="font-heading text-base px-8 py-6 border-glass-border hover:bg-muted">
+            <Link to="/services" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto font-heading text-base px-8 py-6 border-glass-border hover:bg-muted">
                 {t("hero.ctaSecondary")}
               </Button>
             </Link>
