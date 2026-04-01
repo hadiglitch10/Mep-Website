@@ -97,7 +97,7 @@ export const ContactSection = () => {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
                 />
-                <Button type="submit" size="lg" className="w-full gap-2 font-heading text-base py-6 shadow-glow">
+                <Button type="submit" size="lg" className="w-full gap-2 font-heading text-base py-6 shadow-elevated hover:-translate-y-1 transition-all">
                   <Send className="w-5 h-5" />
                   {t("contact.sendButton")}
                 </Button>

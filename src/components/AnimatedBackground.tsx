@@ -1,16 +1,15 @@
 export const AnimatedBackground = () => {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Base grid */}
+    <div className="fixed inset-0 -z-10 bg-background overflow-hidden">
+      {/* Base architectural grid */}
       <div className="absolute inset-0 bg-grid opacity-20" />
       
-      {/* Floating blobs */}
-      <div className="blob blob-delay-1 absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/10" />
-      <div className="blob blob-delay-2 absolute bottom-1/4 right-0 w-80 h-80 rounded-full bg-orange-glow/5" />
-      <div className="blob blob-delay-3 absolute top-2/3 left-1/3 w-72 h-72 rounded-full bg-primary/5" />
+      {/* Ambient drifting gradients */}
+      <div className="ambient-drift drift-delay-1 absolute top-1/4 -left-64 w-[50rem] h-[50rem] rounded-full bg-primary/5 pointer-events-none" />
+      <div className="ambient-drift drift-delay-2 absolute bottom-0 -right-64 w-[60rem] h-[60rem] rounded-full bg-secondary/30 pointer-events-none" />
       
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      {/* Gradient overlay to soften the grid towards the edges */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background pointer-events-none" />
     </div>
   );
 };

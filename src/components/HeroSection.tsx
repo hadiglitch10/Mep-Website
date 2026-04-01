@@ -36,7 +36,7 @@ export const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
             <Link to="/contact">
-              <Button size="lg" className="gap-2 font-heading text-base px-8 py-6 shadow-glow hover:shadow-[0_0_60px_-10px_hsl(var(--primary)/0.5)] transition-shadow">
+              <Button size="lg" className="gap-2 font-heading text-base px-8 py-6 shadow-elevated hover:-translate-y-1 transition-all">
                 {t("hero.ctaPrimary")}
                 <ArrowRight className="w-5 h-5" />
               </Button>

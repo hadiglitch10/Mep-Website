@@ -7,7 +7,7 @@
 @layer base {
   /* ─── Light theme (default) ─── */
   :root {
-    --background: 216 28% 93%;
+    --background: 210 20% 98%;
     --foreground: 220 40% 8%;
 
     --card: 0 0% 100%;
@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 40% 8%;
 
-    --primary: 211 100% 44%;
+    --primary: 215 90% 40%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 216 22% 86%;
@@ -25,7 +25,7 @@
     --muted: 216 22% 88%;
     --muted-foreground: 220 14% 38%;
 
-    --accent: 211 100% 44%;
+    --accent: 215 90% 40%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 56%;
@@ -33,34 +33,34 @@
 
     --border: 216 18% 76%;
     --input: 216 18% 76%;
-    --ring: 211 100% 44%;
+    --ring: 215 90% 40%;
 
-    --radius: 0.75rem;
+    --radius: 0.25rem;
 
     --sidebar-background: 216 28% 90%;
     --sidebar-foreground: 220 40% 8%;
-    --sidebar-primary: 211 100% 44%;
+    --sidebar-primary: 215 90% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 216 22% 86%;
     --sidebar-accent-foreground: 220 40% 8%;
     --sidebar-border: 216 18% 76%;
-    --sidebar-ring: 211 100% 44%;
+    --sidebar-ring: 215 90% 40%;
 
     /* Custom tokens */
     --navy: 220 40% 18%;
     --navy-light: 215 30% 28%;
     --navy-deep: 220 45% 8%;
-    --orange-glow: 211 100% 44%;
-    --orange-dim: 211 70% 38%;
+    --orange-glow: 200 90% 45%;
+    --orange-dim: 200 70% 35%;
     --glass: 0 0% 100%;
-    --glass-border: 216 18% 74%;
+    --glass-border: 210 20% 90%;
 
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --shadow-card: 0 4px 20px -4px hsl(220 40% 8% / 0.08);
-    --shadow-glow: 0 0 32px -8px hsl(211 100% 44% / 0.2);
-    --shadow-elevated: 0 12px 40px -8px hsl(220 40% 8% / 0.12);
+    --shadow-card: 0 2px 10px -2px hsl(220 40% 8% / 0.05);
+    --shadow-glow: 0 0 20px -8px hsl(215 90% 40% / 0.15);
+    --shadow-elevated: 0 8px 24px -6px hsl(220 40% 8% / 0.1);
   }
 
   /* ─── Dark theme ─── */
@@ -74,7 +74,7 @@
     --popover: 220 22% 10%;
     --popover-foreground: 210 20% 92%;
 
-    --primary: 211 100% 50%;
+    --primary: 215 90% 55%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 215 30% 16%;
@@ -83,7 +83,7 @@
     --muted: 215 25% 14%;
     --muted-foreground: 215 15% 55%;
 
-    --accent: 211 100% 50%;
+    --accent: 215 90% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -91,29 +91,29 @@
 
     --border: 215 20% 18%;
     --input: 215 20% 18%;
-    --ring: 211 100% 50%;
+    --ring: 215 90% 55%;
 
     --sidebar-background: 220 22% 8%;
     --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 211 100% 50%;
+    --sidebar-primary: 215 90% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 215 25% 14%;
     --sidebar-accent-foreground: 210 20% 92%;
     --sidebar-border: 215 20% 18%;
-    --sidebar-ring: 211 100% 50%;
+    --sidebar-ring: 215 90% 55%;
 
     /* Custom tokens */
     --navy: 220 40% 13%;
     --navy-light: 215 30% 20%;
     --navy-deep: 220 45% 8%;
-    --orange-glow: 211 100% 60%;
-    --orange-dim: 211 70% 40%;
+    --orange-glow: 200 90% 55%;
+    --orange-dim: 200 70% 40%;
     --glass: 220 25% 12%;
     --glass-border: 215 20% 22%;
 
-    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 40px -10px hsl(211 100% 50% / 0.3);
-    --shadow-elevated: 0 20px 60px -15px hsl(0 0% 0% / 0.6);
+    --shadow-card: 0 4px 16px -6px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 24px -10px hsl(215 90% 55% / 0.2);
+    --shadow-elevated: 0 16px 48px -12px hsl(0 0% 0% / 0.5);
   }
 }
 
@@ -169,36 +169,35 @@
     mask-composite: exclude;
   }
 
-  /* Animated background grid */
+  /* Architectural grid */
   .bg-grid {
     background-image:
       linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: grid-shimmer 8s ease-in-out infinite;
+    background-size: 80px 80px;
+    background-position: center;
+    animation: grid-shimmer 15s ease-in-out infinite;
   }
 
   @keyframes grid-shimmer {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
   }
 
-  /* Floating blob animation */
-  .blob {
-    animation: blob-float 20s ease-in-out infinite;
-    filter: blur(80px);
+  /* Ambient background drifts */
+  .ambient-drift {
+    animation: drift 25s ease-in-out infinite;
+    filter: blur(100px);
   }
 
-  @keyframes blob-float {
+  @keyframes drift {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -50px) scale(1.1); }
-    50% { transform: translate(-20px, 20px) scale(0.9); }
-    75% { transform: translate(40px, 30px) scale(1.05); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
   }
 
-  .blob-delay-1 { animation-delay: -5s; }
-  .blob-delay-2 { animation-delay: -10s; }
-  .blob-delay-3 { animation-delay: -15s; }
+  .drift-delay-1 { animation-delay: -8s; }
+  .drift-delay-2 { animation-delay: -16s; }
 }
 
 @layer utilities {
